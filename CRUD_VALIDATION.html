@@ -1,0 +1,461 @@
+<script>
+    var ab = -1;
+    var id1 = 0;
+    var id = []
+    var name1 = []
+    var mno = []
+    var bday = []
+    var email = []
+    var pwd = []
+    var ins1 = -1;
+
+    do {
+        var a = parseInt(prompt('What you want to do?\n 1.Insert\n 2.View\n 3.Search\n 4.Update\n 5.Delete\n 6.Exit'));
+
+        if (a == 1) {
+            do {
+
+                //Id    
+                id1++;
+                id.push(id1);
+
+                //Name
+                var ins = -1;
+                do {
+                    var name2 = prompt('Please Enter Name:\n - It takes characters only \n - The characters should be more than 3');
+                    var name_reg = /^[a-zA-Z\-]+$/
+                    var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    var random_str = ''
+
+                    if (name2.length > 3 && name2.match(name_reg)) {
+                        name1.push(name2);
+                        alert(name1);
+                        ins = 1;
+                    }
+                    else {
+                        for (var io = 2; io > 0; io--) {
+                            if (io == 2) {
+                                alert('Enter more than 3 characters; \n you have ' + io + ' attemps left..');
+                                name2 = prompt('Please Enter Name:\n - It takes characters only \n - The characters should be more than 3:')
+
+                                if (name2.length > 3 && name2.match(name_reg)) {
+                                    name1.push(name2);
+                                    alert(name1);
+                                    ins = 1;
+                                }
+                                else {
+                                    io = 1;
+                                    alert('Enter more than 3 characters; \n you have ' + io + ' attemps left..');
+                                    name2 = prompt('Please Enter Name:\n - It takes characters only \n - The characters should be more than 3:')
+
+                                    if (name2.length > 3 && name2.match(name_reg)) {
+                                        name1.push(name2);
+                                        alert(name1);
+                                        ins = 1;
+                                    }
+                                    else {
+                                        var nameReg = /^[a-zA-Z]*$/;
+                                        if (!name2.match(nameReg)) {
+                                            var n1 = '';
+                                        }
+                                        else {
+                                            var n1 = name2;
+                                        }
+
+                                        for (var i = 3; i > n1.length; i--) {
+                                            random_str = random_str + chars.charAt(Math.floor(Math.random() * chars.length));
+                                        }
+
+                                        var name_random = n1 + random_str;
+                                        alert(name_random)
+                                        name1.push(name_random);
+                                        ins = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } while (ins == -1)
+
+                //Mobile No:
+                var m1 = -1;
+                do {
+                    var m = prompt('Please Enter Mobile NO:');
+                    var mno_rndm = /^\d+$/;
+
+                    if (m.length >= 10 && m.length <= 13 && m.match(mno_rndm)) {
+                        mno.push(m);
+                        alert(mno);
+                        m1 = 1;
+                    }
+                    else {
+                        for (var mn = 2; mn > 0; mn--) {
+                            if (mn == 2) {
+                                alert('Please Enter Valid Phone Number; \n\n you have ' + mn + ' attemps left..');
+                                m = prompt('Please Enter Phone Number:\n - must be 10 digit \n - it takes numbers and one special character(0 to 9 and +):')
+                                if (m.length >= 10 && m.length <= 13 && m.match(mno_rndm)) {
+                                    mno.push(m);
+                                    alert(mno);
+                                    m1 = 1;
+                                }
+                                else {
+                                    mn = 1;
+                                    alert('Please Enter Valid Phone Number; \n\n you have ' + mn + ' attemps left..');
+                                    m = prompt('Please Enter Phone Number:\n - must be 10 digit \n - it takes numbers and one special character(0 to 9 and +):')
+                                    if (m.length >= 10 && m.length <= 13 && m.match(mno_rndm)) {
+                                        mno.push(m);
+                                        alert(mno);
+                                        m1 = 1;
+                                    }
+                                    else {
+                                        var random_no = '+' + Math.floor(Math.random() * 9000000000);
+                                        alert(random_no)
+                                        mno.push(random_no);
+                                        m1 = 1;
+                                    }
+                                }
+                            }
+
+                        }
+
+                    }
+
+                } while (m1 == -1)
+
+                //B'day:
+
+                var dd = -1;
+                do {
+
+                    var d1 = prompt('Please Enter Birth date \n must be in (DD/MM/YYYY) format:');
+                    var d = /^(?:0[1-9]|[12]\d|3[01])([/])(?:0[1-9]|1[012])\1(?:19|2021)\d\d$/;
+
+                    if (d1.match(d)) {
+                        bday.push(d1)
+                        alert(d1);
+                        dd = 1;
+                    }
+                    else {
+                        for (var d = 2; d > 0; d--) {
+                            if (d == 2) {
+                                alert('Please Enter valid birth date: \n you have ' + d + ' atemps left')
+                                d1 = prompt('Please Enter Birth date \n must be in (DD/MM/YYYY) format:');
+                                if (d1.match(d)) {
+                                    bday.push(d1)
+                                    alert(d1);
+                                    dd = 1;
+                                }
+                                else {
+                                    d = 1;
+                                    alert('Please Enter valid birth date: \n you have ' + d + ' atemps left')
+                                    d1 = prompt('Please Enter Birth date \n must be in (DD/MM/YYYY) format:');
+                                    if (d1.match(d)) {
+                                        bday.push(d1)
+                                        alert(d1);
+                                        dd = 1;
+                                    }
+                                    else {
+                                        var date_min = 1;
+                                        var date_max = 31;
+                                        var dt = 1
+                                        var m = 1;
+                                        var m_min = 1;
+                                        var m_max = 12;
+                                        var y = 1;
+                                        var y_min = 1951
+                                        var y_max = 2021
+
+                                        if (dt > 0) {
+                                            var dr = Math.floor(Math.random() * (date_max - date_min + 1)) + date_min;
+                                        }
+                                        if (m > 0) {
+                                            var mr = Math.floor(Math.random() * (m_max - m_min + 1)) + m_min;
+                                        }
+                                        if (y > 0) {
+                                            var yr = Math.floor(Math.random() * (y_max - y_min + 1)) + y_min;
+                                        }
+                                        alert(dr + '/' + mr + '/' + yr);
+                                        var random_bday = dr + '/' + mr + '/' + yr;
+                                        bday.push(random_bday);
+                                        dd = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } while (dd == -1)
+
+                //email
+
+                var e = -1;
+                do {
+                    var email1 = prompt('Please Enter Email:')
+                    var email_reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    var email_rndm = 'abcdefghijklmnopqrstuvwxyz1234567890';
+
+
+                    if (email1.match(email_reg)) {
+                        email.push(email1);
+                        alert(email)
+                        e = 1;
+                    } else {
+
+                        for (var em = 3; em > 0; em--) {
+                            if (em == 2) {
+                                alert('Please enter valid email address:\n -Must includes @. \n\n\n\n\n you have ' + em + ' attemps left..')
+                                email1 = prompt('Please Enter Email:')
+
+                                if (email1.match(email_reg)) {
+                                    email.push(email1);
+                                    alert(email)
+                                    e = 1;
+                                } else {
+                                    em = 1
+                                    alert('Please enter valid email address:\n -Must includes @. \n\n\n\n\n you have ' + em + ' attemps left..')
+                                    email1 = prompt('Please Enter Email:')
+
+                                    if (email1.match(email_reg)) {
+                                        email.push(email1);
+                                        alert(email)
+                                        e = 1;
+                                    } else {
+                                        if (email_rndm.length > 0) {
+                                            for (var i = 0; i < 8; i++) {
+                                                random_str = random_str + email_rndm.charAt(Math.floor(Math.random() * email_rndm.length));
+                                            }
+                                        }
+                                        alert(random_str + '@gmail.com')
+                                        email.push(random_str + '@gmail.com');
+                                        e = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                } while (e == -1)
+
+                //Password:
+
+                var p = -1;
+                do {
+                    var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    var pwd_rdm = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+                    var pw = '!@#\$%\^&\*';
+                    var pwd1 = prompt('Please Enter Password: \n -Must be between 8 to 15 characters. \n -Must includes 1 Uppercase 1 lowercase 1 special symbol.');
+                    var random_str = ''
+                    var random_str1 = ''
+
+
+                    if (pwd1.match(pwd_rdm)) {
+                        alert(pwd1);
+                        pwd.push(pwd1);
+                        p = 1;
+
+                    } else {
+                        for (var pd = 2; pd > 0; pd--) {
+                            if (pd == 2) {
+                                alert('Please enter valid password: \n -Must be between 8 to 15 characters. \n -Must includes 1 Uppercase 1 lowercase 1 special symbol.\n\n you have ' + pd + ' attemps left')
+                                pwd1 = prompt('Please Enter Password: \n -Must be between 8 to 15 characters. \n -Must includes 1 Uppercase 1 lowercase 1 special symbol.')
+
+                                if (pwd1.match(pwd_rdm)) {
+                                    alert(pwd1);
+                                    pwd.push(pwd1);
+                                    p = 1;
+                                } else {
+
+                                    pd = 1;
+                                    alert('Please enter valid password: \n -Must be between 8 to 15 characters. \n -Must includes 1 Uppercase 1 lowercase 1 special symbol.\n\n you have ' + pd + ' attemps left')
+                                    pwd1 = prompt('Please Enter Password: \n -Must be between 8 to 15 characters. \n -Must includes 1 Uppercase 1 lowercase 1 special symbol.')
+
+                                    if (pwd1.match(pwd_rdm)) {
+                                        alert(pwd1);
+                                        pwd.push(pwd1);
+                                        p = 1;
+                                    } else {
+
+                                        if (chars.length > 0) {
+                                            for (var i = 0; i < 5; i++) {
+                                                random_str = random_str + chars.charAt(Math.floor(Math.random() * chars.length));
+                                            }
+                                        }
+
+                                        if (pw.length > 0) {
+                                            for (var j = 0; j < 1; j++) {
+
+                                                random_str1 = random_str1 + pw.charAt(Math.floor(Math.random() * pw.length));
+                                            }
+                                        }
+                                        var random_no = Math.floor(Math.random() * 90);
+
+                                        var pw1 = (random_str) + (random_no) + (random_str1);
+
+                                        pwd.push(pw1);
+                                        alert(pwd1);
+                                        p = 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } while (p == -1)
+
+
+                //View the Record:
+
+                var view1 = ' ';
+                for (var j = 0; j < id.length; j++) {
+                    view1 = view1 + 'Id:-' + id[j] + '\n' + 'Name:-' + name1[j] + '\n' + 'Mobile No:-' + mno[j] + '\n' + 'DOB:-' + bday[j] +
+                        '\n' + 'Email ID:-' + email[j] + '\n' + 'Password:-' + pwd[j] + '\n';
+                }
+                alert(view1);
+
+                //Add More Records:
+
+                var add1 = -1
+                do {
+                    var add = parseInt(prompt('Do you want to Add another record? \n 1.Yes \n 2.No'));
+                    if (add == 1) {
+                        add1 = 1;
+                    } else {
+                        alert('End of the program....! Bye Bye....!!')
+                        add1 = 1;
+                        ab = 1;
+                        m = -1;
+                    }
+
+                } while (add1 == -1)
+
+            } while (ab == -1)
+
+        }
+        //view the data
+
+        else if (a == 2) {
+            var view1 = ' '
+            for (var j = 0; j < id.length; j++) {
+                view1 = view1 + 'Id:-' + id[j] + '\n' + 'Name:-' + name1[j] + '\n' + 'Mobile No:-' + mno[j] + '\n' + 'DOB:-' + bday[j] +
+                    '\n' + 'Email ID:-' + email[j] + '\n' + 'Password:-' + pwd[j] + '\n';
+            }
+            alert(view1);
+        }
+
+        //search the data
+
+        else if (a == 3) {
+            var se = 0
+            do {
+                var search1 = parseInt((prompt('choose 1.by ID 2.by Name 3. by email 4.cancel option for search:')));
+
+                var k = -1
+                if (search1 == 1) {
+                    var ids = parseInt(prompt('Enter id for search:'));
+                    for (var i = 0; i < id.length; i++) {
+                        k = i;
+                        if (ids == id[k]) {
+                            alert('Id' + id[k] + '\n' + 'Name' + name1[k] + '\n' + 'Email' + email[k])
+                        }
+                    }
+
+                }
+                else if (search1 == 2) {
+                    var names = prompt('Enter Name for search:');
+                    for (var i = 0; i < name1.length; i++) {
+                        k = i;
+                        if (names == name1[k]) {
+                            alert('Id' + id[k] + '\n' + 'Name' + name1[k] + '\n' + 'Email' + email[k])
+                        }
+                    }
+                }
+
+                else if (search1 == 3) {
+                    var emails = prompt('Enter Email for search:');
+                    for (var i = 0; i < email.length; i++) {
+                        k = i;
+                        if (emails == email[k]) {
+                            alert('Id' + id[k] + '\n' + 'Name' + name1[k] + '\n' + 'Email' + email[k])
+                        }
+                    }
+                } else if (search1 == 4) {
+                    alert('End of the program....!!');
+                    se = se + 1
+                }
+            } while (se == -1)
+
+        }
+
+
+        //update the data
+
+        else if (a == 4) {
+            var up = parseInt(prompt('Enter Id for update:'));
+            var up1 = 0
+
+            if (up1 == -1) {
+                alert('no data found')
+            } else {
+                for (var k = 0; k < id.length; k++) {
+                    if (up == id[k]) {
+                        up1 = k;
+                    }
+                }
+            }
+            var up2 = parseInt(prompt('What you want to update?\n 1.Name \n 2.Email'))
+
+            if (up2 == 1) {
+                name1[up1] = prompt('Enter new Name:')
+            } else if (up2 == 2) {
+                email[up1] = prompt('Enter new Email:')
+            }
+            alert('ID:' + id[up1] + '\n' + 'Name:' + name1[up1] + '\n' + 'Email:' + email[up1])
+
+        }
+
+        //delete the data
+
+        else if (a == 5) {
+            var del = parseInt(prompt('Enter Id for Delete:'));
+            var del1 = 0
+
+            for (var d = 0; d < id.length; d++) {
+                if (del == id[d]) {
+                    del1 = d;
+                    break;
+                }
+            }
+            id.splice(del1, 1);
+            name1.splice(del1, 1)
+            email.splice(del1, 1)
+
+            var view1 = ''
+            for (var j = 0; j < id.length; j++) {
+                view1 = view1 + id[j] + '-' + name1[j] + '-' + email[j] + '\n'
+            }
+            alert(view1);
+        }
+
+        //exit the program
+
+        else if (a == 6) {
+            alert('End of the program....! bye bye  ....!!')
+            m = m + 1;
+        }
+
+
+
+
+
+
+
+    } while (m == -1);
+
+
+
+
+
+
+
+
+
+
+</script>
